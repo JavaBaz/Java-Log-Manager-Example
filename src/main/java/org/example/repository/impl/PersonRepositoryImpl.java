@@ -23,7 +23,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         entityManager.persist(person);
         entityManager.getTransaction().commit();
         entityManager.refresh(person);
-
+        LOGGER.log(Level.INFO, "Person " + person.getFirstName() + " " + person.getLastName() + "saved to database successfully.");
         return person;
     }
 
