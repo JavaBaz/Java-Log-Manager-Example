@@ -56,6 +56,8 @@ public class PersonRepositoryImpl implements PersonRepository {
         toDeletePerson = entityManager.find(Person.class, person.getId());
         entityManager.remove(toDeletePerson);
         entityManager.getTransaction().commit();
+        LOGGER.log(Level.INFO, "Person " + person.getFirstName() + " " + person.getLastName() + "with id : "+person.getId() +" deleted in database successfully.");
+
     }
 
     @Override
