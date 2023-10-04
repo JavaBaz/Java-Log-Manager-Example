@@ -9,6 +9,7 @@ import org.example.repository.StudentRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StudentRepositoryImpl implements StudentRepository {
@@ -24,6 +25,7 @@ public class StudentRepositoryImpl implements StudentRepository {
         entityManager.persist(student);
         entityManager.getTransaction().commit();
         entityManager.refresh(student);
+        LOGGER.log(Level.INFO, "Student " + student.getFirstName() + " " + student.getLastName() + " saved to database successfully.");
         return student;
     }
 
