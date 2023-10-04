@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.persistents.Person;
 import org.example.persistents.Student;
 import org.example.persistents.Teacher;
 import org.example.persistents.enumurations.TeacherLevel;
@@ -9,11 +10,15 @@ import org.example.service.TeacherService;
 import org.example.service.impl.PersonServiceImpl;
 import org.example.service.impl.StudentServiceImpl;
 import org.example.service.impl.TeacherServiceImpl;
+import org.example.util.LoggingUtil;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        LoggingUtil.initLogManager();
 
         PersonService personService = new PersonServiceImpl();
         TeacherService teacherService = new TeacherServiceImpl();
@@ -21,7 +26,8 @@ public class Main {
 
 //        System.out.println(personService.findAll());
 //
-//        Person amin = new Person("Aminnn","Bazgirrr", LocalDate.of(1991,1,1));
+        Person amin = new Person("Aminxdfggdbhsfdsgsdfgnn","Bazgidffdjrrr", LocalDate.of(1991,1,1));
+        personService.save(amin);
 //        System.out.println("--------");
 //        Person returnedPerson = personService.signUp();
 //        System.out.println(returnedPerson);
