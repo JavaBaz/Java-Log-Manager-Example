@@ -36,7 +36,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public List<Person> findAll() {
-
+        LOGGER.log(Level.INFO, "All persons searched.");
         return entityManager.createQuery("FROM Person", Person.class).getResultList();
     }
 
