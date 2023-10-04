@@ -8,12 +8,14 @@ import org.example.repository.PersonRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersonRepositoryImpl implements PersonRepository {
 
     private final EntityManagerFactory entityManagerFactory = AppEntityManagerFactory.getEntityManagerFactory();
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
-
+    private static final Logger LOGGER = Logger.getLogger(PersonRepositoryImpl.class.getName());
 
     @Override
     public Person save(Person person) {
@@ -21,17 +23,20 @@ public class PersonRepositoryImpl implements PersonRepository {
         entityManager.persist(person);
         entityManager.getTransaction().commit();
         entityManager.refresh(person);
+
         return person;
     }
 
     @Override
     public Person findById(long id) {
+
         return entityManager.find(Person.class, id);
     }
 
 
     @Override
     public List<Person> findAll() {
+
         return entityManager.createQuery("FROM Person", Person.class).getResultList();
     }
 
@@ -45,7 +50,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public void delete(Person person) {
         entityManager.getTransaction().begin();
-        Person toDeletePerson ;
+        Person toDeletePerson;
         toDeletePerson = entityManager.find(Person.class, person.getId());
         entityManager.remove(toDeletePerson);
         entityManager.getTransaction().commit();
