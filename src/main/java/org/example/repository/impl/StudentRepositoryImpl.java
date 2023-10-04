@@ -9,11 +9,13 @@ import org.example.repository.StudentRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class StudentRepositoryImpl implements StudentRepository {
 
     private final EntityManagerFactory entityManagerFactory = AppEntityManagerFactory.getEntityManagerFactory();
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
+    private static final Logger LOGGER = Logger.getLogger(StudentRepositoryImpl.class.getName());
 
 
     @Override
