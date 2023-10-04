@@ -64,9 +64,13 @@ public class PersonRepositoryImpl implements PersonRepository {
     public boolean contain(Person person) {
         try {
             Person foundPerson = entityManager.find(Person.class, person.getId());
+            LOGGER.log(Level.INFO, "Person " + person.getFirstName() + " " + person.getLastName() + "with id : "+person.getId() +" found in database successfully.");
             return foundPerson != null;
+
         } catch (Exception e) {
             e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Person " + person.getFirstName() + " " + person.getLastName() + "with id : "+person.getId() +" was not in database!");
+
             return false;
         }
     }
