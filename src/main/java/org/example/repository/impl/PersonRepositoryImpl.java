@@ -23,13 +23,13 @@ public class PersonRepositoryImpl implements PersonRepository {
         entityManager.persist(person);
         entityManager.getTransaction().commit();
         entityManager.refresh(person);
-        LOGGER.log(Level.INFO, "Person " + person.getFirstName() + " " + person.getLastName() + "saved to database successfully.");
+        LOGGER.log(Level.INFO, "Person " + person.getFirstName() + " " + person.getLastName() + " saved to database successfully.");
         return person;
     }
 
     @Override
     public Person findById(long id) {
-        LOGGER.log(Level.INFO, "Person with id : " + id + "searched in database to find.");
+        LOGGER.log(Level.INFO, "Person with id : " + id + " searched in database to find.");
         return entityManager.find(Person.class, id);
     }
 
@@ -45,6 +45,8 @@ public class PersonRepositoryImpl implements PersonRepository {
         entityManager.getTransaction().begin();
         entityManager.merge(person);
         entityManager.getTransaction().commit();
+        LOGGER.log(Level.INFO, "Person " + person.getFirstName() + " " + person.getLastName() + "with id : "+person.getId() +" updated in database successfully.");
+
     }
 
     @Override
