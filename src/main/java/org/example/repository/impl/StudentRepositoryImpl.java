@@ -37,6 +37,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public List<Student> findAll() {
+        LOGGER.log(Level.INFO, "All student searched.");
         return entityManager.createQuery("FROM Student", Student.class).getResultList();
     }
 
@@ -45,24 +46,29 @@ public class StudentRepositoryImpl implements StudentRepository {
         entityManager.getTransaction().begin();
         entityManager.merge(student);
         entityManager.getTransaction().commit();
+        LOGGER.log(Level.INFO, "Student " + student.getFirstName() + " " + student.getLastName() + "with id : " + student.getId() + " updated in database successfully.");
     }
 
     @Override
     public void delete(Student student) {
         entityManager.getTransaction().begin();
-        Person toDeletePerson ;
+        Person toDeletePerson;
         toDeletePerson = entityManager.find(Student.class, student.getId());
         entityManager.remove(toDeletePerson);
         entityManager.getTransaction().commit();
+        LOGGER.log(Level.INFO, "Student " + student.getFirstName() + " " + student.getLastName() + "with id : " + student.getId() + " deleted in database successfully.");
     }
 
     @Override
     public boolean contain(Student student) {
         try {
             Person foundPerson = entityManager.find(Student.class, student.getId());
+            LOGGER.log(Level.INFO, "Student " + student.getFirstName() + " " + student.getLastName() + "with id : " + student.getId() + " found in database successfully.");
             return foundPerson != null;
         } catch (Exception e) {
             e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Student " + student.getFirstName() + " " + student.getLastName() + "with id : " + student.getId() + " was not in database!");
             return false;
-        }    }
+        }
+    }
 }
