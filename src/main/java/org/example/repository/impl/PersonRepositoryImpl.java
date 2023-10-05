@@ -29,7 +29,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public Person findById(long id) {
-        LOGGER.log(Level.INFO, "Person with id : " + id + " searched in database to find.");
+        LOGGER.log(Level.INFO, "Person with id : " + id + " searched in database to be found.");
         return entityManager.find(Person.class, id);
     }
 

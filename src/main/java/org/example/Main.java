@@ -26,7 +26,7 @@ public class Main {
 
 //        System.out.println(personService.findAll());
 //
-        Person amin = new Person("Aminxdfggdbhsfdsgsdfgnn","Bazgidffdjrrr", LocalDate.of(1991,1,1));
+        Person amin = new Person("test","Bazgidffdjrrr", LocalDate.of(1991,1,1));
         personService.save(amin);
 //        System.out.println("--------");
 //        Person returnedPerson = personService.signUp();
@@ -57,7 +57,7 @@ public class Main {
 //        System.out.println(teacherService.contain(farzad));
 
 
-//        studentService.save(new Student("Navid","Nikfar",LocalDate.of(1900,1,1),"Computer", 2020));
+        studentService.save(new Student("Navid","Nikfar",LocalDate.of(1900,1,1),"Computer", 2020));
 //        studentService.save(new Student("Navaaid","Nikaaafar",LocalDate.of(1900,1,1),"Compaaauter", 2020));
 //        System.out.println(studentService.findAll());
 //        System.out.println(studentService.findById(19));

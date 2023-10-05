@@ -31,6 +31,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public Student findById(long id) {
+        LOGGER.log(Level.INFO, "Student with id : " + id + " searched in database to be found.");
         return entityManager.find(Student.class, id);
     }
 
